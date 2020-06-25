@@ -1,0 +1,36 @@
+==> [application/x-font-type1]
+
+Pattern has 20 elts (size 32)
+	family: "Courier"(s)
+	style: "Regular"(s)
+	stylelang: "en"(s) "en"(s)
+	slant: 0(i)(s)
+	weight: 80(i)(s)
+	width: 100(i)(s)
+	spacing: 100(i)(s)
+	foundry: "ibm"(s)
+	file: "./application/x-font-type1/1.pfb"(s)
+	index: 0(i)(s)
+	outline: True(s)
+	scalable: True(s)
+	charset: 
+	0000: 00000000 ffffffff ffffffff 7fffffff 00000000 ffffffff ffffffff ffffffff
+	0001: ffccffff ffffcff7 ffff3dff 7f0fffff 00040000 00000000 00000000 00200000
+	0002: 00000000 00000000 00000000 00000000 00000000 00000000 3f0002c0 00000000
+	0003: 00000000 00000000 00000000 00000000 01080000 10320248 00000059 00000000
+	0020: 77980000 56010047 00000010 e7f10000 00000000 00000000 00000000 00000000
+	0021: 00000000 00000044 78000000 00000000 001f0000 00200000 00000000 00000000
+	0022: c6240000 10000200 00000100 00000033 00000000 00000000 00000000 00000000
+	0025: 11111005 10101010 ffff0000 00001fff 00000000 00000001 00000000 00000000
+	0026: 00000000 00000000 00000005 00000c69 00000000 00000000 00000000 00000000
+	00f6: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000104
+	00fb: 0000001f 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+(s)
+	lang: aa|ay|bi|br|ca|ch|co|cs|da|de|en|eo|es|et|eu|fi|fj|fo|fr|fur|fy|gd|gl|gv|ho|hu|ia|id|ie|io|is|it|ki|kl|lb|lt|mg|mh|mt|nb|nds|nl|nn|no|nr|nso|oc|om|pl|pt|rm|sk|sma|smj|so|sq|ss|st|sv|sw|tk|tl|tn|tr|ts|uz|vo|vot|wa|wen|wo|xh|yap|zu|an|crh|csb|fil|hsb|ht|jv|kj|ku-tr|kwm|lg|li|ms|na|ng|pap-an|pap-aw|rn|rw|sc|sg|sn|su|za(s)
+	fontversion: 0(i)(s)
+	fontformat: "Type 1"(s)
+	decorative: False(s)
+	postscriptname: "Courier"(s)
+	color: False(s)
+	symbol: False(s)
+

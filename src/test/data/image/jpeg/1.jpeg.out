@@ -1,0 +1,86 @@
+==> [image/jpeg]
+
+Image: ./image/jpeg/1.jpeg
+  Format: JPEG (Joint Photographic Experts Group JFIF format)
+  Mime type: image/jpeg
+  Class: DirectClass
+  Geometry: 65x65+0+0
+  Units: Undefined
+  Colorspace: sRGB
+  Type: TrueColor
+  Base type: Undefined
+  Endianess: Undefined
+  Depth: 8-bit
+  Channel depth:
+    Red: 8-bit
+    Green: 8-bit
+    Blue: 8-bit
+  Channel statistics:
+    Pixels: 4225
+    Red:
+      min: 0  (0)
+      max: 236 (0.92549)
+      mean: 22.5546 (0.0884492)
+      standard deviation: 54.3062 (0.212966)
+      kurtosis: 4.29741
+      skewness: 2.42862
+      entropy: 0.449044
+    Green:
+      min: 0  (0)
+      max: 173 (0.678431)
+      mean: 5.64686 (0.0221446)
+      standard deviation: 18.0316 (0.0707123)
+      kurtosis: 23.829
+      skewness: 4.66323
+      entropy: 0.392524
+    Blue:
+      min: 0  (0)
+      max: 219 (0.858824)
+      mean: 26.7399 (0.104862)
+      standard deviation: 47.8943 (0.187821)
+      kurtosis: 1.1085
+      skewness: 1.62296
+      entropy: 0.531295
+  Image statistics:
+    Overall:
+      min: 0  (0)
+      max: 236 (0.92549)
+      mean: 18.3138 (0.0718187)
+      standard deviation: 40.0774 (0.157166)
+      kurtosis: 5.93636
+      skewness: 2.64077
+      entropy: 0.457621
+  Rendering intent: Perceptual
+  Gamma: 0.454545
+  Chromaticity:
+    red primary: (0.64,0.33)
+    green primary: (0.3,0.6)
+    blue primary: (0.15,0.06)
+    white point: (0.3127,0.329)
+  Matte color: grey74
+  Background color: white
+  Border color: srgb(223,223,223)
+  Transparent color: none
+  Interlace: None
+  Intensity: Undefined
+  Compose: Over
+  Page geometry: 65x65+0+0
+  Dispose: Undefined
+  Iterations: 0
+  Compression: JPEG
+  Quality: 92
+  Orientation: Undefined
+  Properties:
+    date:create: 2020-06-26T23:39:51+03:00
+    date:modify: 2020-06-20T17:20:51+03:00
+    jpeg:colorspace: 2
+    jpeg:sampling-factor: 1x1,1x1,1x1
+    signature: c1e9d2f1b681c1ca350fb670985ac35545d058e87e5f2bfbd2a761dfdf3feeda
+  Artifacts:
+    verbose: true
+  Tainted: False
+  Filesize: 2958B
+  Number pixels: 4225
+  User time: 0.000u
+  Elapsed time: 0:01.000
+  Version: ImageMagick 7.0.7-34 Q16 x86_64 20180520 https://www.imagemagick.org

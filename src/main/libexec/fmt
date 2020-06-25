@@ -1,0 +1,64 @@
+#!/usr/bin/perl
+
+use warnings;
+use IO::Handle;
+use utf8;
+use open IO=>':locale';
+use open ':std';
+
+my $width=shift//80;
+
+my $line='';
+my $word='';
+my $lastChar="\n";
+
+my $char;
+while(defined($char=STDIN->getc))
+{
+	if($lastChar eq "\n")
+	{
+		if($char=~m/\S/)
+		{
+			$word.=$char;
+		}
+		elsif($char eq "\n")
+		{
+			print "$line\n\n";
+			$line='';
+		}
+	}
+	elsif($lastChar=~m/\S/)
+	{
+		if($char=~m/\S/)
+		{
+			$word.=$char;
+		}
+		else
+		{
+			if($line eq '')
+			{
+				$line=$word;
+			}
+			elsif(length($line)+length($word)<$width)
+			{
+				$line.=" $word";
+			}
+			else
+			{
+				print "$line\n";
+				$line=$word;
+			}
+			$word='';
+		}
+	}
+	elsif($lastChar eq ' ')
+	{
+		if($char=~m/\S/)
+		{
+			$word=$char;
+		}
+	}
+	$lastChar=$char;
+}
+
+print "$line\n";

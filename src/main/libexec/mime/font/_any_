@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo
+exec mimepipe-font "$1"

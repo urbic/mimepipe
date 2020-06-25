@@ -1,0 +1,30 @@
+==> [application/x-rpm]
+
+Name        : unicode-blocks
+Version     : 12.1.0
+Release     : lp152.1.1
+Architecture: noarch
+Install Date: (not installed)
+Group       : Productivity/Publishing/Other
+Size        : 6741
+License     : Unicode-DFS-2016
+Signature   : RSA/SHA256, Ср 19 фев 2020 21:00:06, Key ID b88b2fd43dbdc284
+Source RPM  : unicode-blocks-12.1.0-lp152.1.1.src.rpm
+Build Date  : Ср 19 фев 2020 21:00:00
+Build Host  : build31
+Relocations : (not relocatable)
+Packager    : https://bugs.opensuse.org
+Vendor      : openSUSE
+URL         : http://www.unicode.org/
+Summary     : Unicode Blocks Chart
+Description :
+Blocks from the Unicode Character Database.
+Distribution: openSUSE Leap 15.2
+Provides    : unicode-blocks = 12.1.0-lp152.1.1
+Requires    : rpmlib(CompressedFileNames) <= 3.0.4-1
+Requires    : rpmlib(FileDigests) <= 4.6.0-1
+Requires    : rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires    : rpmlib(PayloadIsXz) <= 5.2-1
+
+drwxr-xr-x   1 root     root            0 Feb 19 20:59 ./usr/share/unicode
+-rw-r--r--   1 root     root         6741 Aug  5  2010 ./usr/share/unicode/Blocks.txt

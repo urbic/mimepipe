@@ -1,0 +1,27 @@
+==> [audio/x-ms-wma]
+
+General
+Complete name                            : ./audio/x-ms-wma/1.wma
+Format                                   : Windows Media
+File size                                : 56.8 KiB
+Duration                                 : 3 s 343 ms
+Overall bit rate                         : 139 kb/s
+Maximum Overall bit rate                 : 128 kb/s
+Encoded date                             : UTC 1970-01-01 00:00:00.000
+WM/EncodingSettings                      : Lavf57.83.100
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format version                           : Version 2
+Codec ID                                 : 161
+Codec ID/Info                            : Windows Media Audio
+Description of the codec                 : Windows Media Audio V8
+Duration                                 : 3 s 342 ms
+Bit rate                                 : 128 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 44.1 kHz
+Bit depth                                : 16 bits
+Stream size                              : 52.2 KiB (92%)
+
+

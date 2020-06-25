@@ -1,0 +1,30 @@
+==> [video/webm]
+
+General
+Complete name                            : ./video/webm/1.webm
+Format                                   : WebM
+Format version                           : Version 2
+File size                                : 672 KiB
+Duration                                 : 4 s 833 ms
+Overall bit rate                         : 1 139 kb/s
+Writing application                      : Lavf57.83.100
+Writing library                          : Lavf57.83.100
+
+Video
+ID                                       : 1
+Format                                   : VP9
+Codec ID                                 : V_VP9
+Duration                                 : 4 s 833 ms
+Bit rate                                 : 1 087 kb/s
+Width                                    : 500 pixels
+Height                                   : 500 pixels
+Display aspect ratio                     : 1.000
+Frame rate mode                          : Constant
+Frame rate                               : 30.000 FPS
+Bits/(Pixel*Frame)                       : 0.145
+Stream size                              : 641 KiB (95%)
+Writing library                          : Lavc57.107.100 libvpx-vp9
+Default                                  : Yes
+Forced                                   : No
+
+

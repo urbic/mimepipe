@@ -1,0 +1,57 @@
+#!/usr/bin/perl
+
+use warnings;
+use Text::CSV;
+use IO::Handle;
+use IO::File;
+use Getopt::Long;
+use open qw/:locale/;
+
+sub dump_as_table($$$)
+{
+	my $ifh=shift;
+	my $ofh=shift;
+	my $csv=shift;
+	my @rows;
+	my @rowwidths=();
+	while(my $row=$csv->getline($ifh))
+	{
+		my @rw=map { length } @$row;
+		for(my $i=0; $i<=$#rw; $i++)
+		{
+			$rowwidths[$i]=($rw[$i]//0) if ($rowwidths[$i]//0)<=($rw[$i]//0);
+		}
+		push @rows, $row;
+	}
+	for my $row(@rows)
+	{
+		for(my $i=0; $i<@$row; $i++)
+		{
+			$ofh->printf("\%-$rowwidths[$i]s", $row->[$i]);
+			$ofh->print(($i<@$row-1)? ' | ': "\n");
+		}
+	}
+}
+
+sub dump_as_records($$$)
+{
+	my $ifh=shift;
+	my $ofh=shift;
+	my $csv=shift;
+	while(my $row=$csv->getline($ifh))
+	{
+		$ofh->print("$_\n") for @$row;
+		$ofh->print("\n");
+	}
+}
+
+my ($as_table, $of);
+GetOptions('t!'=>\$as_table, 'o|output-file=s'=>\$of);
+
+my $csvfile=shift;
+my $csv=Text::CSV->new({ binary=>1, auto_diag=>1, sep_char=>"\t" });
+
+my $ifh=(defined $csvfile)? (IO::File->new($csvfile, '<:encoding(utf8)') or die "$csvfile: $!"): *STDIN;
+my $ofh=(defined $of)? (IO::File->new($of, '>:encoding(utf8)') or die "$of: $!"): *STDOUT;
+
+$as_table? dump_as_table($ifh, $ofh, $csv): dump_as_records($ifh, $ofh, $csv);

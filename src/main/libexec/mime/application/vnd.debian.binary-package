@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	dpkg-deb -I "$1"
+	echo
+	dpkg-deb -c "$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	dpkg-deb --fsys-tarfile "$1" |tar -C "$tmpdir" -xf- "$2"
+	shift
+	cd "$tmpdir"
+	mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

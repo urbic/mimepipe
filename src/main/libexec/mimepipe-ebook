@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo
+ebook-meta "$1"
+tmpfile=$(mktemp -p /run/user/$UID --suffix=.txt mimepipe-XXXXXXXXXX)
+ebook-convert "$1" "$tmpfile" --max-line-length 80 >/dev/null 2>/dev/null
+cat "$tmpfile"
+rm -f "$tmpfile"

@@ -1,0 +1,25 @@
+==> [audio/x-vorbis+ogg]
+
+General
+Complete name                            : ./audio/x-vorbis+ogg/1.ogg
+Format                                   : Ogg
+File size                                : 30.5 KiB
+Duration                                 : 3 s 344 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 74.7 kb/s
+Writing application                      : Lavc57.107.100 libvorbis
+
+Audio
+ID                                       : 436613675 (0x1A06322B)
+Format                                   : Vorbis
+Format settings, Floor                   : 1
+Duration                                 : 3 s 344 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 112 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 44.1 kHz
+Compression mode                         : Lossy
+Stream size                              : 45.7 KiB
+Writing library                          : Lavf57.83.100
+
+

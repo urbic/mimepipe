@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case "$1" in
+	*.*.lz4)
+		base="${1%.*}"
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="${base/*./.}" mimepipe-XXXXXXXXXX)
+		lz4cat "$1" >"$tmpfile"
+		mimepipe "$tmpfile"
+		rm -f "$tmpfile"
+		;;
+	*)
+		echo
+		exec lz4cat "$1"
+		;;
+esac

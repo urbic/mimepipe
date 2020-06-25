@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo
+djvutxt "$1"
+echo

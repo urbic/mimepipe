@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo
+exec ls ${TEXTUAL_COLOR:+"--color=always"} -lA "$*"

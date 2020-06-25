@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	jar -tvf "$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	env -C "$tmpdir" jar -xf "$(readlink -ne "$1")" "$2"
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

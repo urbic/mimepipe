@@ -1,0 +1,419 @@
+#!/usr/bin/perl
+
+package MimePipe
+{
+	use v5.10;
+	use File::MimeInfo;
+	use File::MimeInfo::Magic;
+	use File::Spec;
+	use Log::Minimal;
+
+	sub _lessColor
+	{
+		if(defined $ENV{LESS})
+		{
+			for(split /\s+/, $ENV{LESS})
+			{
+				if($_ eq '-r' or $_ eq '-R')
+				{
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
+
+	sub _path
+	{
+		#return map { File::Spec->rel2abs($_) } split /:/, $ENV{MIMEPIPE_PATH};
+		return split /:/, $ENV{MIMEPIPE_PATH};
+	}
+
+	sub _filter
+	{
+		my $mimetype=shift;
+		for my $item(_path)
+		{
+			my $filter=File::Spec->catfile($item, 'mime', $mimetype);
+			return $filter if -x $filter;
+
+			$mimetype=~m#^([^/]+)/#;
+			my $filter=File::Spec->catfile($item, 'mime', "$1/_any_");
+			return $filter if -x $filter;
+		}
+		return undef;
+	}
+
+	sub _run_filter
+	{
+		my $mimetype=shift;
+		my $filter=shift;
+		STDOUT->flush;
+		say "==> [$mimetype]";
+		#local $SIG{CHLD}=sub { print "GOT SIGCHLD\n"; STDOUT->flush; exit; };
+		local $ENV{MIMEPIPE_COLOR}=1 if _lessColor;
+		local $ENV{PATH}=join(':', _path).":$ENV{PATH}";
+		system($filter, @_);
+		if($?==-1)
+		{
+			say print "failed to execute: $!";
+		}
+		elsif($? & 127)
+		{
+			say "failed to execute: $!";
+			STDOUT->flush;
+			exit;
+		}
+	}
+
+	sub process
+	{
+		my $file=$_[0];
+		my @mimetypes=grep { defined }
+				File::MimeInfo::Magic::magic($file),
+				File::MimeInfo::mimetype($file);
+		if(@mimetypes==2)
+		{
+			if($mimetypes[0] eq $mimetypes[1]
+					or File::MimeInfo::mimetype_isa(@mimetypes))
+			{
+				pop @mimetypes;
+			}
+			elsif(File::MimeInfo::mimetype_isa(reverse @mimetypes))
+			{
+				shift @mimetypes;
+			}
+		}
+		while(@mimetypes)
+		{
+			my $mimetype=shift @mimetypes;
+			debugf('Try filter [%s]', $mimetype);
+			my $filter=_filter($mimetype);
+			if(defined $filter)
+			{
+				_run_filter($mimetype, $filter, @_);
+				return;
+			}
+			debugf('Add filter [%s] as parent of [%s]', $_, $mimetype)
+				for File::MimeInfo::mimetype_isa($mimetype);
+			unshift @mimetypes, File::MimeInfo::mimetype_isa($mimetype);
+		}
+	}
+}
+
+use warnings;
+
+MimePipe::process(@ARGV);
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+mimepipe - a modular filter for less
+
+=head1 SYNOPSIS
+
+B<mimepipe> I<file> [I<contained_file…>]
+
+=head1 DESCRIPTION
+
+The B<mimepipe> script outputs textual representation for file given as a
+parameter. When called with several parameters, the first one is considered as
+the name of the container file and the rest are the names of contained files.
+
+=head2 Search Path
+
+B<mimepipe> searches for particular filter for a given MIME type in the
+following directories (in order):
+
+=over
+
+=item * listed (separated by colons) in the C<MIMEPIPE_PATH> environment variable
+
+=item * F<~/.mimepipe>
+
+=item * F<B<E<lt>libexecdirE<gt>>/mimepipe>
+
+=back
+
+Filter for a particular MIME type C<I<E<lt>typeE<gt>>/I<E<lt>subtypeE<gt>>> is
+located in the executable file F<mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>.
+As a fallback, when needed filter not found, the file
+F<mime/B<E<lt>typeE<gt>>/_any_> is used, which fits any MIME subtype
+C<I<E<lt>typeE<gt>>/*>.
+
+=head2 Programming Filters
+
+When B<mimepipe> calls a filter it passes the file name (and possibly the names
+of contained files for containers) as command-line arguments. Additionally it
+prepends the C<PATH> environment variable with colon separated list of
+directories from the search path so the filter can execute helper programs
+located in these directories.
+
+The filter for container file type, depending on the number of
+command-line arguments, can operate differently. When one argument is passed,
+it lists the contents of the container. Otherwise the filter extracts the
+contained file to the temporary directory and invokes B<mimepipe> recursively
+passing an absolute name of the file unpacked and the remaining arguments to
+it. When recursive invocation is finished, the temporary directory is deleted.
+
+We give as an example the filter programmed in shell language for the
+C<application/zip> MIME type:
+
+	#!/bin/sh
+
+	if test $# -le 1; then
+		exec unzip -lv "$1"
+	else
+		tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+		unzip -qd "$tmpdir" "$1" "$2"
+		shift
+		env -C "$tmpdir" mimepipe "$@"
+		rm -rf "$tmpdir"
+	fi
+
+=head1 SUPPORTED MIME TYPES AND DEPENDENCIES
+
+=over
+
+=item C<application/epub+zip>
+
+ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
+
+=item C<application/gzip>
+
+zcat (L<B<gzip>|http://www.gnu.org/software/gzip/>).
+
+=item C<application/octet-stream>
+
+TODO
+
+=item C<application/pdf>
+
+pdftotext (L<B<poppler-tools>|https://poppler.freedesktop.org/>).
+
+=item C<application/postscript>
+
+ps2ascii (L<B<ghostscript>|https://www.ghostscript.com/>).
+
+=item C<application/rtf>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
+=item C<application/vnd.ms-cab-compressed>
+
+cabextract (L<B<cabextract>|http://www.cabextract.org.uk/>).
+
+=item C<application/vnd.debian.binary-package>
+
+dpkg-deb (L<B<dpkg>|http://www.debian.org>),
+tar (L<B<tar>|https://www.gnu.org/software/tar/>).
+
+=item C<application/vnd.oasis.opendocument.text>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
+=item C<application/vnd.oasis.opendocument.spreadsheet>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
+
+=item C<application/vnd.sun.xml.writer>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
+=item C<application/x-7z-compressed>
+
+7z (L<B<p7zip>|http://p7zip.sourceforge.net/>).
+
+=item C<application/x-arj>
+
+arj (L<B<arj>|http://arj.sourceforge.net/>).
+
+=item C<application/x-bzip>
+
+bzcat (L<B<bzip2>|http://www.bzip.org/>).
+
+=item C<application/x-bzip-compressed-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>),
+bzip2 (L<B<bzip2>|http://www.bzip.org/>).
+
+=item C<application/x-cd-image>
+
+isoinfo (L<B<mkisofs>|http://cdrtools.sourceforge.net/private/cdrecord.html>).
+
+=item C<application/x-compressed-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>),
+gzip (L<B<gzip>|http://www.gnu.org/software/gzip/>).
+
+=item C<application/x-cpio>
+
+cpio (L<B<cpio>|http://www.gnu.org/software/cpio/cpio.html>).
+
+=item C<application/x-dbf>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
+
+=item C<application/x-fictionbook+xml>
+
+ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
+
+=item C<application/x-font-type1>
+
+fc-query (L<B<fontconfig>|http://fontconfig.org/>).
+
+=item C<application/x-java>
+
+javap (L<B<java-openjdk-devel>|https://openjdk.java.net/>).
+
+=item C<application/x-java-archive>
+
+jar (L<B<java-openjdk-devel>|https://openjdk.java.net/>).
+
+=item C<application/x-lzma-compressed-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>),
+lzma (L<B<xz>|http://tukaani.org/xz/>).
+
+=item C<application/x-matroska>
+
+mediainfo (L<B<mediainfo>|https://mediaarea.net>).
+
+=item C<application/x-mobipocket-ebook>
+
+ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
+
+=item C<application/x-rar>
+
+unrar (L<B<unrar>|http://www.rarlab.com>).
+
+=item C<application/x-rpm>
+
+rpm, rpm2cpio (L<B<rpm>|http://rpm.org/>),
+cpio (L<B<cpio>|http://www.gnu.org/software/cpio/cpio.html>).
+
+=item C<application/x-sharedlib>
+
+nm (L<B<binutils>|http://www.gnu.org/software/binutils/>).
+
+=item C<application/x-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>).
+
+=item C<application/x-xz-compressed-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>),
+xz (L<B<xz>|http://tukaani.org/xz/>).
+
+=item C<application/xhtml+xml>
+
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
+=item C<application/zip>
+
+unzip (L<B<unzip>|http://www.info-zip.org/>).
+
+=item C<audio/*>
+
+mediainfo (L<B<mediainfo>|https://mediaarea.net>).
+
+=item C<font/ttf>
+
+fc-query (L<B<fontconfig>|http://fontconfig.org/>).
+
+=item C<image/*>
+
+identify (L<B<ImageMagick>|http://www.imagemagick.org>).
+
+=item C<image/vnd.djvu>
+
+djvutxt (L<B<djvulibre>|http://djvu.sourceforge.net>).
+
+=item C<inode/directory>
+
+ls (L<B<coreutils>|http://www.gnu.org/software/coreutils/>).
+
+=item C<inode/symlink>
+
+readlink (L<B<coreutils>|http://www.gnu.org/software/coreutils/>).
+
+=item C<text/csv>
+
+loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
+
+=item C<text/html>
+
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
+=item C<text/plain>
+
+None.
+
+=item C<text/troff>
+
+groff (L<B<groff>|http://www.gnu.org/software/groff/groff.html>).
+
+=item C<text/x-uuencode>
+
+uudecode (L<B<sharutils>|http://www.gnu.org/software/sharutils>).
+
+=item C<video/*>
+
+mediainfo (L<B<mediainfo>|https://mediaarea.net>).
+
+=back
+
+=head1 FILES
+
+=over
+
+=item F<B<E<lt>bindirE<gt>>/mimepipe>
+
+Main executable.
+
+=item F<B<E<lt>libexecdirE<gt>>/mimepipe/mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>
+
+=item F<~/.mimepipe/mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>
+
+Output filters for particular MIME types.
+
+=item F<B<E<lt>libexecdirE<gt>>/mimepipe/*>
+
+=item F<~/.mimepipe/*>
+
+Helper scripts.
+
+=back
+
+=head1 ENVIRONMENT
+
+=over
+
+=item C<MIMEPIPE_PATH>
+
+Colon-separated list of directories where B<mimepipe> searches for filters and
+helper programs.
+
+=item C<LM_DEBUG>
+
+When true, display debugging messages.
+
+=back
+
+=head1 LICENSE
+
+L<zlib/png|http://opensource.org/licenses/Zlib>.
+
+=head1 AUTHOR
+
+L<Anton Shvetz|mailto:shvetz.anton@gmail.com?subject=mimepipe>.
+
+=cut

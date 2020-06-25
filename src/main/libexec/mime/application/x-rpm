@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	rpm -qip --verbose "$1"
+	rpm --provides -qp "$1" |sed -e 's/^/Provides    : /'
+	rpm --requires -qp "$1" |sed -e 's/^/Requires    : /'
+	echo
+	exec rpm2cpio "$1" 2>/dev/null |cpio -tv 2>/dev/null
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	rpm2cpio "$1" 2>/dev/null |cpio -D "$tmpdir" -i --quiet --make-directories "$2"
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

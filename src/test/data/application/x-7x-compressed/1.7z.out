@@ -1,0 +1,21 @@
+==> [application/x-7z-compressed]
+
+
+Listing archive: ./application/x-7x-compressed/1.7z
+
+--
+Path = ./application/x-7x-compressed/1.7z
+Type = 7z
+Physical Size = 226
+Headers Size = 179
+Method = LZMA2:12
+Solid = +
+Blocks = 1
+
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+2020-06-22 10:39:57 D....            0            0  test
+2020-06-22 10:39:57 ....A           31           47  test/test1.xml
+2020-06-20 14:37:24 ....A           31               test/test2.xml
+------------------- ----- ------------ ------------  ------------------------
+2020-06-22 10:39:57                 62           47  2 files, 1 folders

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	arj v -jv1 "$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	env -C "$tmpdir" arj x -i -y "$(readlink -ne "$1")" "$2" >/dev/null
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

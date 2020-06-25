@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	cpio -tv --quiet <"$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	cpio -i --quiet -D "$tmpdir" "$2" <"$1"
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

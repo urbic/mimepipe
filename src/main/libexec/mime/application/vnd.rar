@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	exec unrar v -idc "$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	unrar x -r -inul "$1" "$2" "$tmpdir" 2>&1
+	shift
+	cd "$tmpdir"
+	mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

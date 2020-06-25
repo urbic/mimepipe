@@ -1,0 +1,8 @@
+#!/bin/sh
+
+tmpfile=$(mktemp -p /run/user/$UID --suffix="${1/*./.}" mimepipe-XXXXXXXXXX)
+cat "$1" >"$tmpfile"
+loffice --headless --convert-to html --outdir /run/user/$UID "$tmpfile" >/dev/null 2>/dev/null
+echo
+w3m -dump "${tmpfile%.*}.html"
+rm -f "$tmpfile" "${tmpfile%.*}.html"

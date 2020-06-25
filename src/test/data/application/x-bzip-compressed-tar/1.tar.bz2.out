@@ -1,0 +1,5 @@
+==> [application/x-bzip-compressed-tar]
+
+drwxr-xr-x tz/users          0 2020-06-20 14:38 test/
+-rw-r--r-- tz/users         30 2020-06-20 14:37 test/test1.xml
+-rw-r--r-- tz/users         31 2020-06-20 14:37 test/test2.xml

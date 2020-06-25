@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo
+exec groff -s -p -t -e -Tutf8 -mandoc "$1"

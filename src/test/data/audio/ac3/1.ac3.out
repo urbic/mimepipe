@@ -1,0 +1,27 @@
+==> [audio/ac3]
+
+General
+Complete name                            : ./audio/ac3/1.ac3
+Format                                   : AC-3
+Format/Info                              : Audio Coding 3
+File size                                : 78.4 KiB
+Duration                                 : 3 s 344 ms
+Overall bit rate mode                    : Constant
+Overall bit rate                         : 192 kb/s
+
+Audio
+Format                                   : AC-3
+Format/Info                              : Audio Coding 3
+Duration                                 : 3 s 343 ms
+Bit rate mode                            : Constant
+Bit rate                                 : 192 kb/s
+Channel(s)                               : 2 channels
+Channel positions                        : Front: L R
+Sampling rate                            : 44.1 kHz
+Frame rate                               : 28.711 FPS (1536 SPF)
+Bit depth                                : 16 bits
+Compression mode                         : Lossy
+Stream size                              : 78.4 KiB (100%)
+Service kind                             : Complete Main
+
+

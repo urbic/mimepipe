@@ -1,0 +1,46 @@
+==> [application/x-font-pcf]
+
+Pattern has 22 elts (size 32)
+	family: "xos4 Terminus"(s)
+	style: "Bold"(s)
+	stylelang: "en"(s) "en"(s)
+	slant: 0(i)(s)
+	weight: 200(i)(s)
+	width: 100(i)(s)
+	pixelsize: 22(f)(s)
+	spacing: 110(i)(s)
+	foundry: "xos4"(s)
+	antialias: False(s)
+	file: "./application/x-font-pcf/1.pcf"(s)
+	index: 0(i)(s)
+	outline: False(s)
+	scalable: False(s)
+	charset: 
+	0000: ffffffff ffffffff ffffffff 7fffffff 00000000 ffffffff ffffffff ffffffff
+	0001: ffffffff ffffffff ffffffff ff3fffff 6005c040 00800000 00000000 00000000
+	0002: 0f000000 008c0000 0b100000 00040000 00040000 38000000 3b0000c0 00000000
+	0003: 00001dff 00000200 00000000 00000000 ffffd7f0 fffffffb 00227fff 007f0000
+	0004: ffffffff ffffffff ffffffff 00000c0c 3fff0000 0fcfcc3f ffff8007 033ffffc
+	001e: 00003000 00f00000 000000ff 00003000 00000000 33000000 00003c00 03000030
+	0020: ffffffff 560d0047 00000000 fff30000 05ff7fff 00005080 00000000 00000000
+	0021: 2460c004 00200054 00000000 00000000 003f0000 08200150 003f1800 00000000
+	0022: c67c3ff9 000007a0 00000100 00000c33 000000cc 00000020 0000000c 00000000
+	0023: 02010f05 00000003 00000000 00000000 f8000000 3c00fbff 00010000 00000000
+	0024: 00003e00 00000010 00000000 00000000 00000000 00000000 00000000 00000000
+	0025: ffffff0f ffffffff ffff0fff ffffffff ffcfffff 10445001 03008c41 00000000
+	0026: 00000000 1c000000 00000005 00000c69 00000000 00000000 00000000 00000000
+	0027: 01980000 00000000 00000000 00000000 00000000 00000000 00000000 00000f00
+	0028: ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+	002e: 00000000 00001000 00000000 00000000 00000000 00000000 00000000 00000000
+	00e0: 00000000 00000000 00000000 00000000 00000000 000f0007 00000000 00000000
+	00f6: 00000000 00000000 00000000 00000000 00000000 40000000 00000000 00000000
+	00ff: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 20000000
+(s)
+	lang: aa|af|av|ay|az-az|ba|bm|be|bg|bi|bin|br|bs|bua|ca|ce|ch|chm|co|cs|cv|da|de|el|en|eo|es|et|eu|fi|fj|fo|fr|fur|fy|gd|gl|gn|gv|haw|ho|hr|hu|ia|ig|id|ie|ik|io|is|it|kaa|ki|kk|kl|kum|kv|kw|ky|la|lb|lez|ln|lt|lv|mg|mh|mi|mk|mo|mt|nb|nds|nl|nn|no|nr|nso|ny|oc|om|os|pl|pt|rm|ro|ru|sah|se|sel|sh|sk|sl|sm|sma|smj|smn|so|sq|sr|ss|st|sv|sw|tg|tk|tl|tn|to|tr|ts|tt|tw|tyv|uk|uz|vo|vot|wa|wen|wo|xh|yap|zu|ak|an|crh|csb|fat|fil|hsb|ht|jv|kj|ku-tr|kwm|lg|li|mn-mn|ms|na|ng|pap-an|pap-aw|rn|rw|sc|sg|sn|su|ty|za(s)
+	fontversion: 0(i)(s)
+	fontformat: "PCF"(s)
+	decorative: False(s)
+	postscriptname: "xos4-Terminus"(s)
+	color: False(s)
+	symbol: False(s)
+

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	isoinfo -l -i "$1" -find -ls
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	image=$(readlink -ne "$1")
+	cd "$tmpdir"
+	echo isoinfo -X -i "$image" -find -name "$2"
+	isoinfo -X -i "$image" -find -name "$2"
+	shift
+	mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

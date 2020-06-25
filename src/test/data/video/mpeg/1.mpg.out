@@ -1,0 +1,37 @@
+==> [video/mpeg]
+
+General
+Complete name                            : ./video/mpeg/1.mpg
+Format                                   : MPEG-PS
+File size                                : 1.02 MiB
+Duration                                 : 4 s 733 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 1 810 kb/s
+
+Video
+ID                                       : 224 (0xE0)
+Format                                   : MPEG Video
+Format version                           : Version 1
+Format settings, BVOP                    : No
+Format settings, Matrix                  : Default
+Format settings, GOP                     : N=12
+Duration                                 : 4 s 733 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 1 774 kb/s
+Width                                    : 500 pixels
+Height                                   : 500 pixels
+Display aspect ratio                     : 1.000
+Frame rate                               : 30.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.237
+Time code of first frame                 : 00:00:00:00
+Time code source                         : Group of pictures header
+GOP, Open/Closed                         : Open
+GOP, Open/Closed of first frame          : Closed
+Stream size                              : 1.00 MiB (98%)
+
+

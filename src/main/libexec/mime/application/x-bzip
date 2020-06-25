@@ -1,0 +1,15 @@
+#!/bin/sh
+
+name="${1##*/}"
+case "$name" in
+	*.bz2)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
+		;;
+	*)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
+		;;
+esac
+
+bzcat "$1" >"$tmpfile"
+mimepipe "$tmpfile"
+rm -f "$tmpfile"

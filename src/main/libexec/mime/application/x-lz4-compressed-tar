@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	lz4cat "$1" |tar -tvf -
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	lz4cat "$1" |tar -C "$tmpdir" -xf - "$2"
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

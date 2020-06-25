@@ -1,0 +1,44 @@
+==> [application/vnd.debian.binary-package]
+
+ new Debian package, version 2.0.
+ size 10148 bytes: control archive=836 bytes.
+     723 байт(а),    15 строк      control              
+     642 байт(а),     7 строк      md5sums              
+ Package: libstring-similarity-perl
+ Source: libstring-similarity-perl (1.04-1)
+ Version: 1.04-1+b4
+ Architecture: amd64
+ Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+ Installed-Size: 37
+ Depends: perl (>= 5.24.1~rc3-2), perlapi-5.24.1, libc6 (>= 2.4)
+ Section: perl
+ Priority: optional
+ Homepage: http://search.cpan.org/dist/String-Similarity/
+ Description: Perl module for calculating the similarity of two strings
+  String::Similarity calculates the similarity index of its two arguments.
+  A value of 0 means that the strings are entirely different. A value
+  of 1 means that the strings are identical. Everything else lies between
+  0 and 1 and describes the amount of similarity between the strings.
+
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/String/
+-rw-r--r-- root/root      2115 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/String/Similarity.pm
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/auto/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/auto/String/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/auto/String/Similarity/
+-rw-r--r-- root/root     10368 2012-03-15 20:22 ./usr/lib/x86_64-linux-gnu/perl5/5.24/auto/String/Similarity/Similarity.so
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/share/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/share/doc/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/share/doc/libstring-similarity-perl/
+-rw-r--r-- root/root       221 2012-03-15 20:22 ./usr/share/doc/libstring-similarity-perl/changelog.Debian.amd64.gz
+-rw-r--r-- root/root       167 2012-03-15 20:22 ./usr/share/doc/libstring-similarity-perl/changelog.Debian.gz
+-rw-r--r-- root/root       666 2009-07-03 17:48 ./usr/share/doc/libstring-similarity-perl/changelog.gz
+-rw-r--r-- root/root      1245 2012-03-15 20:21 ./usr/share/doc/libstring-similarity-perl/copyright
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/share/man/
+drwxr-xr-x root/root         0 2012-03-15 20:22 ./usr/share/man/man3/
+-rw-r--r-- root/root      1977 2012-03-15 20:22 ./usr/share/man/man3/String::Similarity.3pm.gz

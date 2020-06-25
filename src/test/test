@@ -1,0 +1,18 @@
+#!/bin/sh
+
+function test_input()
+{
+	outfile="$1"
+	infile="${1%.*}"
+	mimetype=${infile#*/}
+	mimetype=${mimetype%/*}
+	#echo $infile --- $outfile
+	echo -e "[\e[32m$mimetype\e[m]"
+	#echo "< $infile"
+	#echo "> $outfile"
+	if [ ! -e "${outfile}" ]; then outfile=/dev/null; fi
+	MIMEPIPE_PATH=$(readlink -f ../../main/libexec) $(readlink -f ../../main/libexec/mimepipe) ${infile} |diff - ${outfile} 
+}
+
+cd src/test/data
+for f in $(find -name \*.out |sort); do test_input "$f"; done

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	tar --lzma -tvf "$1"
+else
+	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	tar -C "$tmpdir" --lzma -xf "$1" "$2"
+	shift
+	env -C "$tmpdir" mimepipe "$@"
+	rm -rf "$tmpdir"
+fi

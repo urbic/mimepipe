@@ -1,0 +1,36 @@
+==> [video/x-msvideo]
+
+General
+Complete name                            : ./video/x-msvideo/1.avi
+Format                                   : AVI
+Format/Info                              : Audio Video Interleave
+File size                                : 950 KiB
+Duration                                 : 4 s 833 ms
+Overall bit rate                         : 1 611 kb/s
+Writing application                      : Lavf57.83.100
+
+Video
+ID                                       : 0
+Format                                   : MPEG-4 Visual
+Format profile                           : Simple@L1
+Format settings, BVOP                    : No
+Format settings, QPel                    : No
+Format settings, GMC                     : No warppoints
+Format settings, Matrix                  : Default (H.263)
+Codec ID                                 : FMP4
+Duration                                 : 4 s 833 ms
+Bit rate                                 : 1 595 kb/s
+Width                                    : 500 pixels
+Height                                   : 500 pixels
+Display aspect ratio                     : 1.000
+Frame rate                               : 30.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.213
+Stream size                              : 941 KiB (99%)
+Writing library                          : Lavc57.107.100
+
+

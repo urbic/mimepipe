@@ -1,0 +1,7 @@
+#!/bin/sh
+
+name="${1##*/}"
+tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
+uudecode -o "$tmpfile" "$1"
+mimepipe "$tmpfile"
+rm -f "$tmpfile"

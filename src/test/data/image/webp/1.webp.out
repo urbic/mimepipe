@@ -1,0 +1,93 @@
+==> [image/webp]
+
+Image: ./image/webp/1.webp
+  Format: WEBP (WebP Image Format)
+  Mime type: image/webp
+  Class: DirectClass
+  Geometry: 65x65+0+0
+  Units: Undefined
+  Colorspace: sRGB
+  Type: TrueColorAlpha
+  Base type: Undefined
+  Endianess: Undefined
+  Depth: 8-bit
+  Channel depth:
+    Red: 8-bit
+    Green: 8-bit
+    Blue: 8-bit
+    Alpha: 8-bit
+  Channel statistics:
+    Pixels: 4225
+    Red:
+      min: 0  (0)
+      max: 240 (0.941176)
+      mean: 23.595 (0.0925295)
+      standard deviation: 48.9718 (0.192046)
+      kurtosis: 4.30417
+      skewness: 2.33163
+      entropy: 0.563908
+    Green:
+      min: 0  (0)
+      max: 162 (0.635294)
+      mean: 6.31834 (0.0247778)
+      standard deviation: 17.8593 (0.0700366)
+      kurtosis: 22.4962
+      skewness: 4.47588
+      entropy: 0.44672
+    Blue:
+      min: 0  (0)
+      max: 233 (0.913725)
+      mean: 28.1688 (0.110466)
+      standard deviation: 42.7635 (0.1677)
+      kurtosis: 1.51479
+      skewness: 1.56371
+      entropy: 0.661199
+    Alpha:
+      min: 0  (0)
+      max: 255 (1)
+      mean: 91.426 (0.358533)
+      standard deviation: 103.685 (0.406609)
+      kurtosis: -1.27056
+      skewness: 0.670474
+      entropy: 0.649454
+  Image statistics:
+    Overall:
+      min: 0  (0)
+      max: 255 (1)
+      mean: 37.377 (0.146577)
+      standard deviation: 53.32 (0.209098)
+      kurtosis: 3.36006
+      skewness: 2.10568
+      entropy: 0.58032
+  Alpha: srgba(0,2,0,0)   #00020000
+  Rendering intent: Perceptual
+  Gamma: 0.454545
+  Chromaticity:
+    red primary: (0.64,0.33)
+    green primary: (0.3,0.6)
+    blue primary: (0.15,0.06)
+    white point: (0.3127,0.329)
+  Matte color: grey74
+  Background color: white
+  Border color: srgb(223,223,223)
+  Transparent color: none
+  Interlace: None
+  Intensity: Undefined
+  Compose: Over
+  Page geometry: 65x65+0+0
+  Dispose: Undefined
+  Iterations: 0
+  Compression: Undefined
+  Orientation: Undefined
+  Properties:
+    date:create: 2020-06-26T23:44:39+03:00
+    date:modify: 2020-06-20T19:03:16+03:00
+    signature: 7ca2374597a0014dc3efb946bee3fe2248f49a55b9b29d2f0d7bb4bd619fc737
+  Artifacts:
+    verbose: true
+  Tainted: False
+  Filesize: 2804B
+  Number pixels: 4225
+  User time: 0.000u
+  Elapsed time: 0:01.000
+  Version: ImageMagick 7.0.7-34 Q16 x86_64 20180520 https://www.imagemagick.org

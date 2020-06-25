@@ -1,0 +1,10 @@
+==> [application/zip]
+
+Archive:  ./application/zip/1.zip
+ Length   Method    Size  Cmpr    Date    Time   CRC-32   Name
+--------  ------  ------- ---- ---------- ----- --------  ----
+       0  Stored        0   0% 2020-06-20 14:38 00000000  test/
+      30  Stored       30   0% 2020-06-20 14:37 1b9bd1ee  test/test1.xml
+      31  Stored       31   0% 2020-06-20 14:37 757e523d  test/test2.xml
+--------          -------  ---                            -------
+      61               61   0%                            3 files

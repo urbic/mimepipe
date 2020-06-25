@@ -1,0 +1,26 @@
+==> [audio/flac]
+
+General
+Complete name                            : ./audio/flac/1.flac
+Format                                   : FLAC
+Format/Info                              : Free Lossless Audio Codec
+File size                                : 101 KiB
+Duration                                 : 3 s 343 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 248 kb/s
+Writing application                      : Lavf57.83.100
+
+Audio
+Format                                   : FLAC
+Format/Info                              : Free Lossless Audio Codec
+Duration                                 : 3 s 343 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 228 kb/s
+Channel(s)                               : 2 channels
+Channel positions                        : Front: L R
+Sampling rate                            : 44.1 kHz
+Bit depth                                : 16 bits
+Stream size                              : 93.0 KiB (92%)
+Writing library                          : Lavf57.83.100
+
+
