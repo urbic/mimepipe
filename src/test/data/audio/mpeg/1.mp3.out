@@ -7,7 +7,7 @@ File size                                : 65.8 KiB
 Duration                                 : 3 s 343 ms
 Overall bit rate mode                    : Variable
 Overall bit rate                         : 160 kb/s
-Writing library                          : LAME
+Writing library                          : LAMEUU
 
 Audio
 Format                                   : MPEG Audio
@@ -22,6 +22,6 @@ Sampling rate                            : 44.1 kHz
 Frame rate                               : 38.281 FPS (1152 SPF)
 Compression mode                         : Lossy
 Stream size                              : 65.3 KiB (99%)
-Writing library                          : LAME
+Writing library                          : LAMEUU
 
 

@@ -63,7 +63,10 @@ Requires:	w3m
 Requires:	xz
 
 %description
-__TODO__
+MIMEPIPE is a modular and extensible alternative to lesspipe. The program
+outputs textual representation of files according to their MIME types.
+
+MIMEPIPE supports files contained in archives and software packages.
 
 %prep
 %setup -q

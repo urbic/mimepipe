@@ -70,8 +70,8 @@ package MimePipe
 	{
 		my $file=$_[0];
 		my @mimetypes=grep { defined }
-				File::MimeInfo::Magic::magic($file),
-				File::MimeInfo::mimetype($file);
+				File::MimeInfo::mimetype($file),
+				File::MimeInfo::Magic::magic($file);
 		if(@mimetypes==2)
 		{
 			if($mimetypes[0] eq $mimetypes[1]
@@ -333,7 +333,7 @@ fc-query (L<B<fontconfig>|http://fontconfig.org/>).
 
 identify (L<B<ImageMagick>|http://www.imagemagick.org>).
 
-=item C<image/vnd.djvu>
+=item C<image/vnd.djvu+multipage>
 
 djvutxt (L<B<djvulibre>|http://djvu.sourceforge.net>).
 
