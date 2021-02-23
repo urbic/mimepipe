@@ -1,0 +1,36 @@
+==> [application/x-dbf]
+
+APPLICATIO,C,71                                                         | N_________,C,48                
+application/msword                                                      | Документ Microsoft Word        
+application/rtf                                                         | Документ RTF                   
+application/vnd.oasis.opendocument.text                                 | Текстовый документ OpenDocument
+application/vnd.openxmlformats-officedocument.wordprocessingml.document | Документ Microsoft Word        
+application/x-compressed-tar                                            | Архив TAR (сжатый gzip)        
+application/x-cpio                                                      | Архив CPIO                     
+application/x-lzma-compressed-tar                                       | Архив TAR (сжатый lzma)        
+application/x-rpm                                                       | Пакет RPM                      
+application/x-sharedlib                                                 | Разделяемая библиотека         
+application/x-tar                                                       | Архив TAR                      
+application/xhtml+xml                                                   | Страница XHTML                 
+application/zip                                                         | Архив ZIP                      
+audio/basic                                                             | Аудио ULAW (Sun)               
+audio/mp2                                                               | Аудио MP2                      
+audio/mpeg                                                              | Аудио MP3                      
+audio/x-vorbis+ogg                                                      | Аудио Ogg Vorbis               
+image/bmp                                                               | Изображение Windows BMP        
+image/gif                                                               | Изображение GIF                
+image/jpeg                                                              | Изображение JPEG               
+image/png                                                               | Изображение PNG                
+image/tiff                                                              | Изображение TIFF               
+image/vnd.microsoft.icon                                                | Значок Windows                 
+image/vnd.zbrush.pcx                                                    | Изображение PCX                
+image/webp                                                              | Изображение WebP               
+image/x-xcf                                                             | Изображение GIMP               
+inode/directory                                                         | Папка                          
+video/mp4                                                               | Видео MPEG-4                   
+video/mpeg                                                              | Видео MPEG                     
+video/quicktime                                                         | Видео QuickTime                
+video/webm                                                              | Видео WebM                     
+video/x-flv                                                             | Видео Flash                    
+video/x-matroska                                                        | Видео Matroska                 
+video/x-msvideo                                                         | Видео AVI                      

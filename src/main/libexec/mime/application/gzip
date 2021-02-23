@@ -5,11 +5,15 @@ case "$name" in
 	*.gz)
 		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
 		;;
+	*.tgz)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}.tar" mimepipe-XXXXXXXXXX)
+		;;
 	*)
-		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name}" mimepipe-XXXXXXXXXX)
 		;;
 esac
 
 zcat "$1" >"$tmpfile"
-mimepipe "$tmpfile"
+shift
+mimepipe "$tmpfile" "$@"
 rm -f "$tmpfile"

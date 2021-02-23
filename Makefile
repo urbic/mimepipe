@@ -46,7 +46,7 @@ build/obs/$(PACKAGE)-$(VERSION).tar.xz::
 dist: build/obs/$(PACKAGE).spec build/obs/$(PACKAGE)-$(VERSION).tar.xz
 
 rpm: dist
-	env -C build/obs/ osc build -k . --no-service --alternative-project home:concyclic
+	env -C build/obs/ osc build -k . --no-service --alternative-project home:urbic
 
 test:
 	@src/test/test

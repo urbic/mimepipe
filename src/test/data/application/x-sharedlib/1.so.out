@@ -7,7 +7,7 @@
 0000000000000570 t deregister_tm_clones
 0000000000000762 t diag
 0000000000000600 t __do_global_dtors_aux
-0000000000201df8 t __do_global_dtors_aux_fini_array_entry
+0000000000201df8 d __do_global_dtors_aux_fini_array_entry
 0000000000202028 d __dso_handle
 0000000000201e00 d _DYNAMIC
 0000000000202088 b fdiag
@@ -15,7 +15,7 @@
 00000000002020a0 b fdiag_max.4219
 00000000000011e0 T _fini
 0000000000000640 t frame_dummy
-0000000000201df0 t __frame_dummy_init_array_entry
+0000000000201df0 d __frame_dummy_init_array_entry
 0000000000001310 r __FRAME_END__
 0000000000000fd1 T fstrcmp
 0000000000202000 d _GLOBAL_OFFSET_TABLE_

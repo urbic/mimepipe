@@ -28,7 +28,7 @@ BuildRequires:	make
 BuildRequires:	fdupes
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
-Requires:	7z
+Requires:	p7zip-full
 Requires:	ImageMagick
 Requires:	arj
 Requires:	binutils
@@ -40,27 +40,33 @@ Requires:	cpio
 Requires:	djvulibre
 Requires:	fontconfig
 Requires:	ghostscript
-Requires:	gpkg
+Requires:	dpkg
 Requires:	groff
 Requires:	gzip
-Requires:	java-openjdk-devel
-Requires:	libreoffice
+Requires:	java-devel
+#Requires:	libreoffice
+Requires:	lz4
 Requires:	lzma
 Requires:	mediainfo
 Requires:	mkisofs
+Requires:	pandoc
 Requires:	perl(File::MimeInfo)
 Requires:	perl(File::MimeInfo::Magic)
 Requires:	perl(File::Spec)
+Requires:	perl(Getopt::Long)
 Requires:	perl(Log::Minimal)
 Requires:	perl-base >= 5.10
 Requires:	poppler-tools
 Requires:	rpm
+Requires:	sharutils
 Requires:	tar
+Requires:	unoconv
 Requires:	unrar
 Requires:	unzip
-Requires:	uudecode
 Requires:	w3m
 Requires:	xz
+
+esyscmd(`for t in $(find src/main/libexec/mime -type f); do t=${t#*/*/*/*/}; t=${t/_any_/*}; echo -e "Provides:\tmimepipe($t)"; done')
 
 %description
 MIMEPIPE is a modular and extensible alternative to lesspipe. The program
@@ -81,7 +87,7 @@ MIMEPIPE supports files contained in archives and software packages.
 	libexecdir=%{_libexecdir} \
 	mandir=%{_mandir} \
 	%{nil}
-%fdupes %{_libexecdir}/%{name}
+%fdupes %{buildroot}%{_libexecdir}/%{name}
 
 %files
 %defattr(-,root,root)

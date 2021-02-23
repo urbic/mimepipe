@@ -11,5 +11,6 @@ case "$name" in
 esac
 
 bzcat "$1" >"$tmpfile"
-mimepipe "$tmpfile"
+shift
+mimepipe "$tmpfile" "$@"
 rm -f "$tmpfile"

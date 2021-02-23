@@ -26,7 +26,7 @@ package MimePipe
 	sub _path
 	{
 		#return map { File::Spec->rel2abs($_) } split /:/, $ENV{MIMEPIPE_PATH};
-		return split /:/, $ENV{MIMEPIPE_PATH};
+		return ((split /:/, $ENV{MIMEPIPE_PATH}), '/usr/lib/mimepipe', "$ENV{HOME}/.config/mimepipe");
 	}
 
 	sub _filter
@@ -53,7 +53,8 @@ package MimePipe
 		#local $SIG{CHLD}=sub { print "GOT SIGCHLD\n"; STDOUT->flush; exit; };
 		local $ENV{MIMEPIPE_COLOR}=1 if _lessColor;
 		local $ENV{PATH}=join(':', _path).":$ENV{PATH}";
-		system($filter, @_);
+		open my $filterfd, '-|', $filter, @_;
+		print $_ while <$filterfd>;
 		if($?==-1)
 		{
 			say print "failed to execute: $!";
@@ -102,8 +103,26 @@ package MimePipe
 }
 
 use warnings;
+use Getopt::Long qw/:config no_ignore_case bundling/;
 
-MimePipe::process(@ARGV);
+my %options;
+
+GetOptions('l|less!', \$options{less});
+
+if(@ARGV)
+{
+	local *STDOUT=STDOUT;
+	if($options{less})
+	{
+		open my $less, '|-', 'less';
+		*STDOUT=$less;
+	}
+	MimePipe::process(@ARGV);
+}
+else
+{
+	print {STDERR} "mimepipe: Missing filename\n";
+}
 
 __END__
 
@@ -134,7 +153,7 @@ following directories (in order):
 
 =item * listed (separated by colons) in the C<MIMEPIPE_PATH> environment variable
 
-=item * F<~/.mimepipe>
+=item * F<~/.config/mimepipe>
 
 =item * F<B<E<lt>libexecdirE<gt>>/mimepipe>
 
@@ -188,6 +207,11 @@ ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
 
 zcat (L<B<gzip>|http://www.gnu.org/software/gzip/>).
 
+=item C<application/msword>
+
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>),
+w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
+
 =item C<application/octet-stream>
 
 TODO
@@ -202,7 +226,7 @@ ps2ascii (L<B<ghostscript>|https://www.ghostscript.com/>).
 
 =item C<application/rtf>
 
-loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>),
 w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
 =item C<application/vnd.ms-cab-compressed>
@@ -214,23 +238,31 @@ cabextract (L<B<cabextract>|http://www.cabextract.org.uk/>).
 dpkg-deb (L<B<dpkg>|http://www.debian.org>),
 tar (L<B<tar>|https://www.gnu.org/software/tar/>).
 
+=item C<application/vnd.ms-excel>
+
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>).
+
 =item C<application/vnd.oasis.opendocument.text>
 
-loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>),
 w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
 =item C<application/vnd.oasis.opendocument.spreadsheet>
 
-loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>).
 
 =item C<application/vnd.sun.xml.writer>
 
-loffice (L<B<libreoffice>|https://www.documentfoundation.org/>),
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>),
 w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
 =item C<application/x-7z-compressed>
 
 7z (L<B<p7zip>|http://p7zip.sourceforge.net/>).
+
+=item C<application/x-archive>
+
+ar (L<B<binutils>|http://www.gnu.org/software/binutils/>).
 
 =item C<application/x-arj>
 
@@ -249,6 +281,10 @@ bzip2 (L<B<bzip2>|http://www.bzip.org/>).
 
 isoinfo (L<B<mkisofs>|http://cdrtools.sourceforge.net/private/cdrecord.html>).
 
+=item C<application/x-compress>
+
+uncompress (L<B<gzip>|http://www.gnu.org/software/gzip/>).
+
 =item C<application/x-compressed-tar>
 
 tar (L<B<tar>|https://www.gnu.org/software/tar/>),
@@ -260,7 +296,7 @@ cpio (L<B<cpio>|http://www.gnu.org/software/cpio/cpio.html>).
 
 =item C<application/x-dbf>
 
-loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
+unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>).
 
 =item C<application/x-fictionbook+xml>
 
@@ -278,6 +314,10 @@ javap (L<B<java-openjdk-devel>|https://openjdk.java.net/>).
 
 jar (L<B<java-openjdk-devel>|https://openjdk.java.net/>).
 
+=item C<application/x-lz4>
+
+lz4cat (L<B<lz4>|http://lz4.org/>).
+
 =item C<application/x-lzma-compressed-tar>
 
 tar (L<B<tar>|https://www.gnu.org/software/tar/>),
@@ -290,6 +330,14 @@ mediainfo (L<B<mediainfo>|https://mediaarea.net>).
 =item C<application/x-mobipocket-ebook>
 
 ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
+
+=item C<application/x-ms-dos-executable>
+
+strings (L<B<binutils>|http://www.gnu.org/software/binutils/>).
+
+=item C<application/x-object>
+
+nm (L<B<binutils>|http://www.gnu.org/software/binutils/>).
 
 =item C<application/x-rar>
 
@@ -353,6 +401,10 @@ loffice (L<B<libreoffice>|https://www.documentfoundation.org/>).
 
 w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
+=item C<text/markdown>
+
+pandoc (L<B<pandoc>|https://hackage.haskell.org/package/pandoc>).
+
 =item C<text/plain>
 
 None.
@@ -381,13 +433,13 @@ Main executable.
 
 =item F<B<E<lt>libexecdirE<gt>>/mimepipe/mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>
 
-=item F<~/.mimepipe/mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>
+=item F<~/.config/mimepipe/mime/B<E<lt>typeE<gt>>/B<E<lt>subtypeE<gt>>>
 
 Output filters for particular MIME types.
 
 =item F<B<E<lt>libexecdirE<gt>>/mimepipe/*>
 
-=item F<~/.mimepipe/*>
+=item F<~/.config/mimepipe/*>
 
 Helper scripts.
 

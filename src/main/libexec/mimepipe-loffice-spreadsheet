@@ -2,7 +2,8 @@
 
 tmpfile=$(mktemp -p /run/user/$UID --suffix="${1/*./.}" mimepipe-XXXXXXXXXX)
 cat "$1" >"$tmpfile"
-loffice --headless --convert-to 'csv:Text - txt - csv (StarCalc):9,,0' --outdir /run/user/$UID "$tmpfile" >/dev/null 2>/dev/null
+#localc --headless --convert-to 'csv:Text - txt - csv (StarCalc):9,,0' --outdir /run/user/$UID "$tmpfile" >/dev/null 2>/dev/null
+unoconv -f csv -i FilterOptions=0 -e 'FilterOptions=9,,0' -o "${tmpfile%.*}.csv" "$tmpfile" >/dev/null 2>/dev/null
 echo
 csv-format -t "${tmpfile%.*}.csv"
 rm -f "$tmpfile" "${tmpfile%.*}.csv"

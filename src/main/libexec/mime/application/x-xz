@@ -1,15 +1,16 @@
 #!/bin/sh
 
-case "$1" in
-	*.lz4)
+name="${1##*/}"
+case "$name" in
+	*.xz)
 		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
 		;;
 	*)
-		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name}" mimepipe-XXXXXXXXXX)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
 		;;
 esac
 
-lz4cat "$1" >"$tmpfile"
+xzcat "$1" >"$tmpfile"
 shift
 mimepipe "$tmpfile" "$@"
 rm -f "$tmpfile"
