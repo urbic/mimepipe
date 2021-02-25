@@ -214,7 +214,7 @@ w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
 =item C<application/octet-stream>
 
-TODO
+cat (L<B<coreutils>|http://www.gnu.org/software/coreutils/>).
 
 =item C<application/pdf>
 
