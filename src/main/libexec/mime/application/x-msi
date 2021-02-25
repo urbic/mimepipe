@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if test $# -le 1; then
+	echo
+	msiinfo suminfo "$1"
+	echo
+	echo Streams:
+	msiinfo streams "$1"
+	echo
+	echo Tables:
+	msiinfo tables "$1"
+else
+	tmpfile=$(mktemp -p /run/user/$UID --suffix="-${2##*/}" mimepipe-XXXXXXXXXX)
+	msiinfo extract "$1" "$2" >"$tmpfile"
+	file "$tmpfile"
+	shift 2
+	mimepipe "$tmpfile"
+	rm -rf "$tmpfile"
+fi

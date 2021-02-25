@@ -335,6 +335,14 @@ ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
 
 strings (L<B<binutils>|http://www.gnu.org/software/binutils/>).
 
+=item C<application/x-msdownload>
+
+strings (L<B<binutils>|http://www.gnu.org/software/binutils/>).
+
+=item C<application/x-msi>
+
+msiinfo (L<B<msitools>|https://wiki.gnome.org/msitools>).
+
 =item C<application/x-object>
 
 nm (L<B<binutils>|http://www.gnu.org/software/binutils/>).

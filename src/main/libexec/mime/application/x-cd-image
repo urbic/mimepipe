@@ -3,12 +3,10 @@
 if test $# -le 1; then
 	isoinfo -l -i "$1" -find -ls
 else
-	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
+	tmpfile=$(mktemp -p /run/user/$UID mimepipe-XXXXXXXXXX)
 	image=$(readlink -ne "$1")
-	cd "$tmpdir"
-	echo isoinfo -X -i "$image" -find -name "$2"
-	isoinfo -X -i "$image" -find -name "$2"
+	isoinfo -x "$2" -i "$image" >"$tmpfile"
 	shift
-	mimepipe "$@"
-	rm -rf "$tmpdir"
+	mimepipe "$tmpfile" "$@"
+	rm -rf "$tmpfile"
 fi

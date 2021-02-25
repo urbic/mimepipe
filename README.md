@@ -51,6 +51,8 @@ MIME type | Dependencies
 `application/x-matroska` | mediainfo ([mediainfo](https://mediaarea.net))
 `application/x-mobipocket-ebook` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)) w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/x-ms-dos-executable` | strings ([binutils](http://www.gnu.org/software/binutils/)).
+`application/x-msdownload` | strings ([binutils](http://www.gnu.org/software/binutils/)).
+`application/x-msi` | msiinfo ([msitools](https://wiki.gnome.org/msitools)).
 `application/x-object` | nm ([binutils](http://www.gnu.org/software/binutils/))
 `application/x-rar` | unrar ([unrar](http://www.rarlab.com))
 `application/x-rpm` | rpm, rpm2cpio ([rpm](http://rpm.org/)), cpio ([cpio](http://www.gnu.org/software/cpio/cpio.html))
