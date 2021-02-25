@@ -1,0 +1,16 @@
+#!/bin/sh
+
+name="${1##*/}"
+case "$name" in
+	*.zstd)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name%.*}" mimepipe-XXXXXXXXXX)
+		;;
+	*)
+		tmpfile=$(mktemp -p /run/user/$UID --suffix="-${name}" mimepipe-XXXXXXXXXX)
+		;;
+esac
+
+zstdcat "$1" >"$tmpfile"
+shift
+mimepipe "$tmpfile" "$@"
+rm -f "$tmpfile"

@@ -369,6 +369,10 @@ w3m (L<B<w3m>|http://w3m.sourceforge.net/>).
 
 unzip (L<B<unzip>|http://www.info-zip.org/>).
 
+=item C<application/zstd>
+
+zstdcat (L<B<zstd>|https://github.com/facebook/zstd>).
+
 =item C<audio/*>
 
 mediainfo (L<B<mediainfo>|https://mediaarea.net>).

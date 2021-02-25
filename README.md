@@ -59,6 +59,7 @@ MIME type | Dependencies
 `application/x-xz-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), xz ([xz](http://tukaani.org/xz/))
 `application/xhtml+xml` | w3m ([w3m](http://w3m.sourceforge.net/))
 `application/zip` | unzip ([unzip](http://www.info-zip.org/))
+`application/zstd` | zstdcat ([zstd](https://github.com/facebook/zstd))
 `audio/*` | mediainfo ([mediainfo](https://mediaarea.net))
 `font/ttf` | fc-query ([fontconfig](http://fontconfig.org/))
 `image/*` | identify ([ImageMagick](http://www.imagemagick.org))
