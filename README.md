@@ -22,7 +22,7 @@ MIME type | Dependencies
 `application/epub+zip` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)), w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/gzip` | zcat ([gzip](http://www.gnu.org/software/gzip/))
 `application/msword` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)), w3m ([w3m](http://w3m.sourceforge.net/))
-`application/octet-stream` | cat ([coreutils](http://www.gnu.org/software/coreutils/)
+`application/octet-stream` | cat ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/pdf` | pdftotext ([poppler-tools](https://poppler.freedesktop.org/))
 `application/postscript` | ps2ascii ([ghostscript](https://www.ghostscript.com/))
 `application/rtf` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)), w3m ([w3m](http://w3m.sourceforge.net/))
