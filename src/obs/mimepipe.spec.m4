@@ -44,6 +44,7 @@ Requires:	dpkg
 Requires:	groff
 Requires:	gzip
 Requires:	java-devel
+Requires:	less
 #Requires:	libreoffice
 Requires:	lz4
 Requires:	lzma
