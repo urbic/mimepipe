@@ -1,3 +1,5 @@
 #!/bin/sh
 
-exec mimepipe "$(readlink -ne "$1")"
+name="$(readlink -ne "$1")"
+shift
+exec mimepipe "$name" "$@"

@@ -51,7 +51,7 @@ package MimePipe
 		STDOUT->flush;
 		say "==> [$mimetype]";
 		#local $SIG{CHLD}=sub { print "GOT SIGCHLD\n"; STDOUT->flush; exit; };
-		local $ENV{MIMEPIPE_COLOR}=1 if _lessColor;
+		#local $ENV{MIMEPIPE_COLOR}=1 if _lessColor;
 		local $ENV{PATH}=join(':', _path).":$ENV{PATH}";
 		open my $filterfd, '-|', $filter, @_;
 		print $_ while <$filterfd>;
@@ -107,21 +107,29 @@ use Getopt::Long qw/:config no_ignore_case bundling/;
 
 my %options;
 
-GetOptions('l|less!', \$options{less});
+GetOptions('l|less!'=>\$options{less});
+
+local *STDOUT=STDOUT;
+if($options{less})
+{
+	open my $less, '|-', 'less';
+	*STDOUT=$less;
+}
 
 if(@ARGV)
 {
-	local *STDOUT=STDOUT;
-	if($options{less})
-	{
-		open my $less, '|-', 'less';
-		*STDOUT=$less;
-	}
 	MimePipe::process(@ARGV);
 }
 else
 {
-	print {STDERR} "mimepipe: Missing filename\n";
+	if(-t STDIN)
+	{
+		print {STDERR} "mimepipe: Missing filename\n";
+	}
+	else
+	{
+		print while <STDIN>;
+	}
 }
 
 __END__
@@ -196,6 +204,13 @@ C<application/zip> MIME type:
 	fi
 
 =head1 SUPPORTED MIME TYPES AND DEPENDENCIES
+
+The B<mimepipe> program itself depends on perl
+(L<B<perl-base>|http://www.perl.org/>) and perl modules:
+L<B<perl(File::MimeInfo)>|http://search.cpan.org/dist/File-MimeInfo/>,
+L<B<perl(Log::Minimal)>|http://search.cpan.org/dist/Log-Minimal/>.
+
+The dependencies of the individual filter programs are listed below:
 
 =over
 
