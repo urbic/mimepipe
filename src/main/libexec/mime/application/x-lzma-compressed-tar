@@ -2,10 +2,10 @@
 
 if test $# -le 1; then
 	echo
-	tar --lzma -tvf "$1"
+	tar --lzma --force-local -tvf "$1"
 else
 	tmpdir=$(mktemp -dp /run/user/$UID mimepipe-XXXXXXXXXX)
-	tar -C "$tmpdir" --lzma -xf "$1" "$2"
+	tar -C "$tmpdir" --lzma --force-local -xf "$1" "$2"
 	shift
 	env -C "$tmpdir" mimepipe "$@"
 	rm -rf "$tmpdir"
