@@ -18,7 +18,7 @@ supertype or generic MIME type.
 ## Supported MIME types and dependencies
 
 MIME type | Dependencies
--- | --
+--------- | ------------
 `application/epub+zip` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)), w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/gzip` | zcat ([gzip](http://www.gnu.org/software/gzip/))
 `application/msword` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)), w3m ([w3m](http://w3m.sourceforge.net/))
@@ -30,7 +30,7 @@ MIME type | Dependencies
 `application/vnd.debian.binary-package` | dpkg-deb ([dpkg](http://www.debian.org)), tar ([tar](https://www.gnu.org/software/tar/))
 `application/vnd.oasis.opendocument.text` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)), w3m ([w3m](http://w3m.sourceforge.net/))
 `application/vnd.oasis.opendocument.spreadsheet` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/))
-`application/vnd.ms-excel` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)).
+`application/vnd.ms-excel` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/))
 `application/vnd.sun.xml.writer` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/)), w3m ([w3m](http://w3m.sourceforge.net/))
 `application/x-7z-compressed` | 7z ([p7zip](http://p7zip.sourceforge.net/))
 `application/x-archive` | ar ([binutils](http://www.gnu.org/software/binutils/))
@@ -38,21 +38,22 @@ MIME type | Dependencies
 `application/x-bzip` | bzcat ([bzip2](http://www.bzip.org/))
 `application/x-bzip-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), bzip2 ([bzip2](http://www.bzip.org/))
 `application/x-cd-image` | isoinfo ([mkisofs](http://cdrtools.sourceforge.net/private/cdrecord.html))
-`application/x-compress` | uncompress ([gzip](http://www.gnu.org/software/gzip/)).
+`application/x-compress` | uncompress ([gzip](http://www.gnu.org/software/gzip/))
 `application/x-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), gzip ([gzip](http://www.gnu.org/software/gzip/))
 `application/x-cpio` | cpio ([cpio](http://www.gnu.org/software/cpio/cpio.html))
 `application/x-dbf` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/))
+`application/x-executable` | nm ([binutils](http://www.gnu.org/software/binutils/))
 `application/x-fictionbook+xml` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)) w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/x-font-type1` | fc-query ([fontconfig](http://fontconfig.org/))
 `application/x-java` | javap ([java-openjdk-devel](https://openjdk.java.net/))
 `application/x-java-archive` | jar ([java-openjdk-devel](https://openjdk.java.net/))
-`application/x-lz4` | lz4cat ([lz4](http://lz4.org/)).
+`application/x-lz4` | lz4cat ([lz4](http://lz4.org/))
 `application/x-lzma-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), lzma ([xz](http://tukaani.org/xz/))
 `application/x-matroska` | mediainfo ([mediainfo](https://mediaarea.net))
 `application/x-mobipocket-ebook` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)) w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
-`application/x-ms-dos-executable` | strings ([binutils](http://www.gnu.org/software/binutils/)).
-`application/x-msdownload` | strings ([binutils](http://www.gnu.org/software/binutils/)).
-`application/x-msi` | msiinfo ([msitools](https://wiki.gnome.org/msitools)).
+`application/x-ms-dos-executable` | strings ([binutils](http://www.gnu.org/software/binutils/))
+`application/x-msdownload` | strings ([binutils](http://www.gnu.org/software/binutils/))
+`application/x-msi` | msiinfo ([msitools](https://wiki.gnome.org/msitools))
 `application/x-object` | nm ([binutils](http://www.gnu.org/software/binutils/))
 `application/x-rar` | unrar ([unrar](http://www.rarlab.com))
 `application/x-rpm` | rpm, rpm2cpio ([rpm](http://rpm.org/)), cpio ([cpio](http://www.gnu.org/software/cpio/cpio.html))
