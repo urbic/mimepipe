@@ -42,7 +42,6 @@ MIME type | Dependencies
 `application/x-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), gzip ([gzip](http://www.gnu.org/software/gzip/))
 `application/x-cpio` | cpio ([cpio](http://www.gnu.org/software/cpio/cpio.html))
 `application/x-dbf` | unoconv ([unoconv](http://dag.wieers.com/home-made/unoconv/))
-`application/x-executable` | nm ([binutils](http://www.gnu.org/software/binutils/))
 `application/x-fictionbook+xml` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)) w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/x-font-type1` | fc-query ([fontconfig](http://fontconfig.org/))
 `application/x-java` | javap ([java-openjdk-devel](https://openjdk.java.net/))

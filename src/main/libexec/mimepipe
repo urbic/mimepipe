@@ -313,10 +313,6 @@ cpio (L<B<cpio>|http://www.gnu.org/software/cpio/cpio.html>).
 
 unoconv (L<B<unoconv>|http://dag.wieers.com/home-made/unoconv/>).
 
-=item C<application/x-executable>
-
-nm (L<B<binutils>|http://www.gnu.org/software/binutils/>).
-
 =item C<application/x-fictionbook+xml>
 
 ebook-meta, ebook-convert (L<B<calibre>|https://calibre-ebook.com/calibre>).
