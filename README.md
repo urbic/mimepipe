@@ -48,6 +48,8 @@ MIME type | Dependencies
 `application/x-java-archive` | jar ([java-openjdk-devel](https://openjdk.java.net/))
 `application/x-lz4` | lz4cat ([lz4](http://lz4.org/))
 `application/x-lzma-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), lzma ([xz](http://tukaani.org/xz/))
+`application/x-lzip` | lzcat ([lzip](https://www.nongnu.org/lzip/lzip.html))
+`application/x-lzip-compressed-tar` | tar ([tar](https://www.gnu.org/software/tar/)), lzip ([lzip](https://www.nongnu.org/lzip/lzip.html))
 `application/x-matroska` | mediainfo ([mediainfo](https://mediaarea.net))
 `application/x-mobipocket-ebook` | ebook-meta, ebook-convert ([calibre](https://calibre-ebook.com/calibre)) w3m ([w3m](http://w3m.sourceforge.net/)), fold ([coreutils](http://www.gnu.org/software/coreutils/))
 `application/x-ms-dos-executable` | strings ([binutils](http://www.gnu.org/software/binutils/))

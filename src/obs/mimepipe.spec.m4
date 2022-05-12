@@ -47,6 +47,7 @@ Requires:	java-devel
 Requires:	less
 #Requires:	libreoffice
 Requires:	lz4
+Requires:	lzip
 Requires:	lzma
 Requires:	mediainfo
 Requires:	mkisofs
