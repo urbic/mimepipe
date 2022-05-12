@@ -333,6 +333,15 @@ jar (L<B<java-openjdk-devel>|https://openjdk.java.net/>).
 
 lz4cat (L<B<lz4>|http://lz4.org/>).
 
+=item C<application/x-lzip>
+
+lzcat (L<B<lzip>|https://www.nongnu.org/lzip/lzip.html>).
+
+=item C<application/x-lzip-compressed-tar>
+
+tar (L<B<tar>|https://www.gnu.org/software/tar/>),
+lzip (L<B<lzip>|https://www.nongnu.org/lzip/lzip.html>).
+
 =item C<application/x-lzma-compressed-tar>
 
 tar (L<B<tar>|https://www.gnu.org/software/tar/>),

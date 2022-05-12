@@ -1,7 +1,7 @@
 #
 # spec file for package mimepipe
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@ Release:	0
 Summary:	Output textual representation for files
 License:	Zlib
 Group:		Productivity/File utilities
-Url:		https://github.com/urbin/%{name}
+Url:		https://github.com/urbic/%{name}
 Source:		%{name}-%{version}.tar.xz
 BuildRequires:	make
 BuildRequires:	fdupes
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 Requires:	p7zip-full
 Requires:	ImageMagick
 Requires:	arj
@@ -47,6 +46,7 @@ Requires:	java-devel
 Requires:	less
 #Requires:	libreoffice
 Requires:	lz4
+Requires:	lzip
 Requires:	lzma
 Requires:	mediainfo
 Requires:	mkisofs
@@ -99,4 +99,3 @@ MIMEPIPE supports files contained in archives and software packages.
 %{_bindir}/%{name}
 
 %changelog
-
