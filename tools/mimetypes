@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for t in $(find src/main/libexec/mime -type f)
+do
+	t=${t#*/*/*/*/}
+	t=${t/_any_/*}
+	echo -e "$t"
+done

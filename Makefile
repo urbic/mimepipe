@@ -1,8 +1,6 @@
 PACKAGE=mimepipe
 VERSION=0.1
 
-SHELL=/bin/bash
-
 prefix=/usr/local
 exec_prefix=${prefix}
 bindir=${exec_prefix}/bin

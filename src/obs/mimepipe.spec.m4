@@ -67,7 +67,7 @@ Requires:	unzip
 Requires:	w3m
 Requires:	xz
 
-esyscmd(`for t in $(find src/main/libexec/mime -type f); do t=${t#*/*/*/*/}; t=${t/_any_/*}; echo -e "Provides:\tmimepipe($t)"; done')
+esyscmd(`tools/mimetypes |sed -e "s#\(.*\)#Provides:\tmimepipe(\1)#"')
 
 %description
 MIMEPIPE is a modular and extensible alternative to lesspipe. The program
