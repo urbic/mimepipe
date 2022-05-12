@@ -11,9 +11,7 @@ jobs:
       - name: Prepare
         run: sudo apt-get install m4 make findutils
       - name: Make spec
-        run: |
-          make spec
-		  cat build/obs/mimepipe.spec
+        run: make spec; cat build/obs/mimepipe.spec
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
