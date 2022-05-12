@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Prepare
-        run: sudo apt-get install m4 make findutils
+        run: sudo apt-get install m4 make findutils bash
       - name: Make spec
         run: make spec; cat build/obs/mimepipe.spec
       - name: Release

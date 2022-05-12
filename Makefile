@@ -42,7 +42,7 @@ spec: build/obs/$(PACKAGE).spec
 
 build/obs/$(PACKAGE).spec: src/obs/$(PACKAGE).spec.m4
 	mkdir -p $(dir $@)
-	m4 --with-syscmd-shell=/bin/bash -D__VERSION__=$(VERSION) <$< >$@
+	m4 -D__VERSION__=$(VERSION) <$< >$@
 
 build/obs/$(PACKAGE)-$(VERSION).tar.xz::
 	git archive --verbose --prefix=$(PACKAGE)-$(VERSION)/ -o $@ HEAD
